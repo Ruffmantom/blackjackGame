@@ -40,21 +40,43 @@ export default function BlackJack() {
     const dealInitialCards = (e) => {
         e.preventDefault()
         burnFirstCard()
-        console.log(playableCards)
-        setUsersCards(prev => [...prev, cards[runningCount]])
-        setRunningCount(runningCount + 1)
-        setDealersCards(prev => [...prev, cards[runningCount]])
-        setRunningCount(runningCount + 1)
+        let count = runningCount
+        let playersSet = []
+        let dealersSet = []
+        console.log("Starting count: ", count)
+        console.log("Setting Players Hand ", playableCards[count])
+        playersSet.push(playableCards[count])
+        count++
+        console.log("Starting count: ", playableCards[count])
+        dealersSet.push(playableCards[count])
+        count++
+        console.log("Setting Players Hand ", playableCards[count])
+        playersSet.push(playableCards[count])
+        count++
+        console.log("Starting count: ", playableCards[count])
+        dealersSet.push(playableCards[count])
+        setRunningCount(count)
+        console.log("Dealers Hand: ", dealersSet)
+        console.log("Players Hand: ", playersSet)
+        setDealersCards(dealersSet)
+        setUsersCards(playersSet)
     }
 
-    const handleHit = () => {
-        // goal is to take eight decks of cards and shuffle them
+    const handleHit = (e) => {
+        e.preventDefault()
+        console.log(runningCount)
+        let playersCards = usersCards
+        let count = runningCount
 
+        count++
+        playersCards.push(playableCards[count])
+
+        setUsersCards(playersCards)
     }
 
-    const handleStay = () => {
+    const handleStay = (e) => {
         // goal is to take eight decks of cards and shuffle them
-
+        e.preventDefault()
     }
 
 
@@ -64,11 +86,15 @@ export default function BlackJack() {
             current Card Count {playableCards.length}
             <button onClick={e => shuffleDecks(e)}>Shuffle</button>
             <button onClick={e => dealInitialCards(e)}>Bet</button>
-            <button>Hit</button>
-            <button>Stay</button>
+            <button onClick={e => handleHit(e)}>Hit</button>
+            <button onClick={e => handleStay(e)}>Stay</button>
+            <button onClick={e => {
+                e.preventDefault()
+                console.log(`Status, UserCards:`, usersCards)
+            }}>Show current Values</button>
 
-            <p>Dealers Cards, {dealersCards.map(c => (<span key={c._id}>{c.name}{dealersCards.length > 1 ? "," : ""}</span>))}</p>
-            <p>Players Cards, {usersCards.map(c => (<span key={c._id}>{c.name}{usersCards.length > 1 ? "," : ""}</span>))}</p>
+            <p>Dealers Cards, {dealersCards && dealersCards.map(c => (<span key={c._id}>{c.name}{dealersCards.length > 1 ? "," : ""}</span>))}</p>
+            <p>Players Cards, {usersCards && usersCards.map(c => (<span key={c._id}>{c.name}{usersCards.length > 1 ? "," : ""}</span>))}</p>
         </div>
     )
 }
