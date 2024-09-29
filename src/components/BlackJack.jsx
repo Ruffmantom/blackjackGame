@@ -1,45 +1,60 @@
 import React, { useEffect, useState } from 'react'
 import { cards } from '../data/cards'
+import GameHeader from './GameHeader'
+import GameFooter from './GameFooter'
 
 export default function BlackJack() {
     // console.log(cards)
     const [playableCards, setPlayableCards] = useState([])
+    const [burnedCards, setBurnedCards] = useState([])
+    // user cards
     const [dealersCards, setDealersCards] = useState([])
     const [usersCards, setUsersCards] = useState([])
     const [runningCount, setRunningCount] = useState(0)
 
-    const shuffleDecks = async (e) => {
-
+    const shuffleDecks = (e) => {
         if (e) {
             e.preventDefault()
         }
+        // init full deck
+        let fullDeck = []
 
-        let a = []
-        // goal is to take eight decks of cards and shuffle them
-        // the cards data is one deck of cards
+        // full deck has 8 sets of 52 cards
         for (var i = 0; i <= 7; i++) {
-            cards.map(card => a.push(card))
+            cards.map(card => fullDeck.push(card))
         }
-        // now shuffle
-        for (let i = a.length - 1; i > 0; i--) {
+
+        // shuffle
+        for (let i = fullDeck.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [a[i], a[j]] = [a[j], a[i]];
+            [fullDeck[i], fullDeck[j]] = [fullDeck[j], fullDeck[i]];
         }
-        // another method
-        // a.sort(() => Math.random() - 0.5);
-        await setPlayableCards(a)
-        console.log(a)
+
+        // another shuffle
+        fullDeck.sort(() => Math.random() - 0.5);
+        console.log(fullDeck)
+        setPlayableCards(fullDeck)
+        // burn first card after shuffle
+        
     }
 
-    const burnFirstCard = () => {
+    const burnCard =  () => {
         let updatedSet = playableCards
         updatedSet.shift()
+         console.log(updatedSet)
         setPlayableCards(updatedSet)
     }
 
     const dealInitialCards = (e) => {
         e.preventDefault()
-        burnFirstCard()
+        // deal 
+
+
+
+
+
+
+
         let count = runningCount
         let playersSet = []
         let dealersSet = []
@@ -79,22 +94,23 @@ export default function BlackJack() {
         e.preventDefault()
     }
 
+    useEffect(() => {
+        shuffleDecks()
+        burnCard()
 
+    }, [shuffleDecks,burnCard])
 
     return (
-        <div>
-            current Card Count {playableCards.length}
-            <button onClick={e => shuffleDecks(e)}>Shuffle</button>
-            <button onClick={e => dealInitialCards(e)}>Bet</button>
-            <button onClick={e => handleHit(e)}>Hit</button>
-            <button onClick={e => handleStay(e)}>Stay</button>
-            <button onClick={e => {
-                e.preventDefault()
-                console.log(`Status, UserCards:`, usersCards)
-            }}>Show current Values</button>
+        <div className='game_container'>
 
-            <p>Dealers Cards, {dealersCards && dealersCards.map(c => (<span key={c._id}>{c.name}{dealersCards.length > 1 ? "," : ""}</span>))}</p>
-            <p>Players Cards, {usersCards && usersCards.map(c => (<span key={c._id}>{c.name}{usersCards.length > 1 ? "," : ""}</span>))}</p>
+                <GameHeader/>
+
+                <div className="playable_area">
+                    <p>Playable area</p>
+                </div>
+
+                <GameFooter/>
+
         </div>
     )
 }

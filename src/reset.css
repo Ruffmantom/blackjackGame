@@ -1,0 +1,91 @@
+/* CSS Reset */
+
+/* Remove all the margins, paddings, and borders from all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set the base font size and family */
+html {
+    font-size: 100%;
+    line-height: 1.5;
+    font-family: sans-serif;
+}
+
+/* Remove the default list styles */
+ol, ul {
+    list-style: none;
+}
+
+/* Remove the default link styles */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Remove the default table border */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Remove the default blockquote and q quotes */
+blockquote, q {
+    quotes: none;
+}
+blockquote::before, blockquote::after, q::before, q::after {
+    content: '';
+    content: none;
+}
+
+/* Remove the default figure margin */
+figure {
+    margin: 0;
+}
+
+/* Set a consistent border for images */
+img {
+    border-style: none;
+}
+
+/* Remove the default form element styling */
+button, input, select, textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+}
+
+/* Make sure buttons don't get border and padding by default */
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* Normalize text alignment */
+h1, h2, h3, h4, h5, h6, p {
+    text-align: inherit;
+}
+
+/* Remove the default fieldset border */
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove the default legend margin */
+legend {
+    padding: 0;
+}
+
+/* Remove the default hr styling */
+hr {
+    border: none;
+    height: 1px;
+    background-color: currentColor;
+    margin: 0;
+}
