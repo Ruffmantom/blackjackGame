@@ -1,19 +1,107 @@
-.App{
+.App {
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 100vw;
 }
-.game_container{
+
+.game_container {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-.playable_area{
+
+.playable_area {
   width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
   flex-grow: 1;
+}
+
+.btn_primary {
+  padding: 7px 12px;
+  background-color: rgb(63, 82, 229);
+  color: white;
+  border-radius: 3px;
+  margin: auto;
+}
+.players_cards_cont{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 270px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  background-color: rgb(255, 211, 211);
+}
+.playable_card{
+  position: absolute;
+  height: 225px;
+  width: 145px;
+  border-radius: 10px;
+  bottom: 10px;
+  left: 10%;
+  z-index: 1;
+  background-color: rgb(206, 255, 255);
+}
+
+.s_2{
+  z-index: 2;
+  left: 20%;
+  background-color: rgb(133, 233, 233);
+}
+.s_3{
+  z-index: 3;
+  left: 30%;
+  background-color: rgb(92, 141, 141);
+}
+.s_4{
+  z-index: 4;
+  left: 40%;
+  background-color: rgb(30, 115, 115);
+}
+.s_5{
+  z-index: 5;
+  margin-left: 60px;
+  background-color: rgb(6, 81, 81);
+}
+
+
+.card_number{
+  position: absolute;
+  font-size: 1.5rem;
+  font-family: 'Times New Roman', Times, serif;
+  &&.top{
+    top: 10px;
+    left: 15px;
+  }
+  &&.bottom{
+    right: 15px;
+    bottom: 10px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.game_footer {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
 }
