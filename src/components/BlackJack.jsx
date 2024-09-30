@@ -55,7 +55,7 @@ export default function BlackJack() {
                 <div className="players_cards_cont">
                     <p>Current Score: {getCurrentScore(playersHand)}</p>
                     {playersHand && playersHand.length >= 1 && playersHand.map((c, i) => (
-                        <div key={c.id} className={`playable_card ${i === 1 ? "s_2" : i === 2 ? "s_3" : i === 3 ? "s_4" : i === 4 ? "s_5" : ""}`}>
+                        <div key={c.id} className={`playable_card ${i === 1 ? "s_2" : i === 2 ? "s_3" : i === 3 ? "s_4" : i === 4 ? "s_5" : "s_1"}`}>
                             <p className='card_number top'>{c.defaultValue}</p>
                             <p className='card_number bottom'>{c.defaultValue}</p>
                         </div>

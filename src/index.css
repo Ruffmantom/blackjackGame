@@ -46,28 +46,30 @@
   bottom: 10px;
   left: 10%;
   z-index: 1;
-  background-color: rgb(206, 255, 255);
+  background-color: rgb(255, 255, 255);
+  outline: 1px solid rgb(193, 193, 193);
+  box-shadow: 0 6px 13px rgba(0, 0, 0, 0.193);
 }
 
 .s_2{
   z-index: 2;
   left: 20%;
-  background-color: rgb(133, 233, 233);
+  /* background-color: rgb(133, 233, 233); */
 }
 .s_3{
   z-index: 3;
   left: 30%;
-  background-color: rgb(92, 141, 141);
+  /* background-color: rgb(92, 141, 141); */
 }
 .s_4{
   z-index: 4;
   left: 40%;
-  background-color: rgb(30, 115, 115);
+  /* background-color: rgb(30, 115, 115); */
 }
 .s_5{
   z-index: 5;
   margin-left: 60px;
-  background-color: rgb(6, 81, 81);
+  /* background-color: rgb(6, 81, 81); */
 }
 
 
